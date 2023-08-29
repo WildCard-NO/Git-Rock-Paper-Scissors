@@ -15,10 +15,14 @@ const computerChoice = computerChoice();
 
 function playerChoice(){
     //Get Input From Player
-    let input = prompt('Type Rock, Paper, or Scissors')
+    let input = prompt("Type Rock, Paper, or Scissors")
+    while (input == null) {
+        input = prompt("Type Rock, Paper, or Scissors")
+    }
     //This Forces letters to be LowerCase
     input = input.toLowerCase();
-    console.log(input)
+    let check = validateInput(input);
+    console.log(input);
 }
 
 function computerChoice(){
@@ -29,5 +33,14 @@ function computerChoice(){
     // easier to use choices.length than 3 in case if changes.
     return choices[Math.floor(Math.random()*choices.length)]
 }
+
+function validateInput(choice){
+    if(choices.includes(choice)){
+        return true;
+    }   else{
+        return false;
+    }
+}
+
 
 Game();
