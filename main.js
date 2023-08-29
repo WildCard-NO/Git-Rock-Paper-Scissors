@@ -15,14 +15,25 @@ const computerChoice = computerChoice();
 
 function playerChoice(){
     //Get Input From Player
-    let input = prompt("Type Rock, Paper, or Scissors")
+    let input = prompt("Type Rock, Paper or Scissors")
     while (input == null) {
-        input = prompt("Type Rock, Paper, or Scissors")
+        input =prompt("Type Rock, Paper or Scissors")
     }
-    //This Forces letters to be LowerCase
     input = input.toLowerCase();
     let check = validateInput(input);
-    console.log(input);
+    while (input == false) {
+        input = prompt(
+            "Type Rock, Paper, or Scissors. The spelling needs to be precise, but capitalization doesn't matter at all"
+            );
+            while (input == null) {
+                input =prompt("Type Rock, Paper or Scissors")
+            }
+            //This Forces letters to be LowerCase
+            input = input.toLowerCase();
+            //If check is valid "in our array (choices (rock, paper, scissors))"
+            //The while loop will become true and break
+            check = validateInput(input);
+        }
 }
 
 function computerChoice(){
@@ -35,12 +46,20 @@ function computerChoice(){
 }
 
 function validateInput(choice){
-    if(choices.includes(choice)){
+    if (choices.includes(choice)){
         return true;
     }   else{
         return false;
     }
 }
 
+function checkWinner(choiceP, choiceC){
+    if(choiceP === choiceC){
+        return "Tie";
+    }   else if ((choiceP == "rock" && choiceC =="scissors") || (choiceP == "paper" && choiceC =="rock")){
+        return "Player";
+    }
+
+}
 
 Game();
