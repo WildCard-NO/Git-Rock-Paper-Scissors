@@ -1,8 +1,10 @@
 const choices =["rock","paper","scissors"]
 
-
+//The game will go for five rounds
 function Game() {
-    playRound();
+    for(let i = 0; i <= 5; i++){
+        playRound();
+    }
     //Play the game
     //Play Five rounds
     //Console based
@@ -11,6 +13,9 @@ function Game() {
 function playRound(){
 const playerSelection = playerChoice();
 const computerSelection = computerChoice();
+//Using "console.log(computerSelection)"
+//We can now see what the computer choose
+console.log(computerSelection);
 const winner = checkWinner(playerSelection, computerSelection)
 console.log(winner)
 }
@@ -36,6 +41,9 @@ function playerChoice(){
             //The while loop will become true and break
             check = validateInput(input);
         }
+        //Without "return input;"
+        //The computer will only win
+        return input;
 }
 
 function computerChoice(){
