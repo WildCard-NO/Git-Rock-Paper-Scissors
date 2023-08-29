@@ -1,16 +1,16 @@
 const choices =["rock","paper","scissors"]
-
+const winners =[];
 //The game will go for five rounds
 function Game() {
-    for(let i = 0; i <= 5; i++){
-        playRound();
+    for(let i = 0; i <= 4; i++){
+        playRound(i);
     }
     //Play the game
     //Play Five rounds
     //Console based
 }
 
-function playRound(){
+function playRound(round){
 const playerSelection = playerChoice();
 const computerSelection = computerChoice();
 //Using "console.log(computerSelection)"
@@ -18,6 +18,8 @@ const computerSelection = computerChoice();
 console.log(computerSelection);
 const winner = checkWinner(playerSelection, computerSelection)
 console.log(winner)
+winners.push(winner)
+logRound(playerSelection, computerSelection, winner, round)
 }
 
 function playerChoice(){
@@ -33,7 +35,7 @@ function playerChoice(){
             "Type Rock, Paper, or Scissors. The spelling needs to be precise, but capitalization doesn't matter at all"
             );
             while (input == null) {
-                input =prompt("Type Rock, Paper or Scissors")
+                input = prompt("Type Rock, Paper or Scissors")
             }
             //This Forces letters to be LowerCase
             input = input.toLowerCase();
@@ -78,6 +80,24 @@ function checkWinner(choiceP, choiceC){
         return "Computer"
     }
 
+}
+
+function logWins() {
+    let playerWins = winners.filter((item) => item == "Player").length;
+    let computerWins = winners.filter((item) => item == "Computer").length;
+    let ties = winners.filter((item) => item == "Tie").length;
+    console.log("Results:");
+    console.log("Player Wins:", playerWins);
+    console.log("Computer Wins:", computerWins);
+    console.log("Ties:", ties);
+}
+
+function logRound(round, playerChoice, computerChoice, winner){
+    console.log("Round:", round)
+    console.log("Player Chose:", playerChoice)
+    console.log("Computer Chose:", computerChoice)
+    console.log("Won The Round", winner)
+    console.log("-----------------------------------");
 }
 
 Game();
