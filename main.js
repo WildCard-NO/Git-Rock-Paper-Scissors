@@ -2,7 +2,7 @@ const choices =["rock","paper","scissors"]
 const winners =[];
 //The game will go for five rounds
 function Game() {
-    for(let i = 0; i <= 4; i++){
+    for(let i = 1; i <= 5; i++){
         playRound(i);
     }
     //Play the game
@@ -26,7 +26,7 @@ function playerChoice(){
     //Get Input From Player
     let input = prompt("Type Rock, Paper or Scissors")
     while (input == null) {
-        input =prompt("Type Rock, Paper or Scissors")
+        input = prompt("Type Rock, Paper or Scissors")
     }
     input = input.toLowerCase();
     let check = validateInput(input);
@@ -77,7 +77,7 @@ function checkWinner(choiceP, choiceC){
     )   {
         return "Player";
     }   else{
-        return "Computer"
+        return "Computer";
     }
 
 }
