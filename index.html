@@ -3,11 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Rock Paper Scissor UI Edition</title>
 </head>
 <body>
-  <div class="flex-container"></div>
-    <h1>Rock Paper Scissor</h1>
+  <div class="score">
+    <h1 class="ties">Ties: 0</h1>
+
+  </div>
+  <div class="winnerDiv">
+    <h1 class="winner"></h1>
+    <button class="reset" onclick="resetGame()">Play Again?</button>
+    </div>
+    <div class="playerSection">
+      <h3 class="playerChoice"></h3>
+      <h3 class="playerScore">Score: 0</h3>
+      <img src="../img/rock.png" alt="rock" class="pImg" id="rock">
+      <img src="../img/paper.png" alt="paper" class="pImg" id="paper">
+      <img src="../img/scissors.png" alt="scissors" class="pImg" id="scissors">
+    </div>
+    <div class="computerSection">
+      <h3 class="computerChoice"></h3>
+      <h3 class="computerScore">Score: 0</h3>
+      <img src="../img/rock.png" alt="rock" class="pImg">
+      <img src="../img/paper.png" alt="paper" class="pImg">
+      <img src="../img/scissors.png" alt="scissors" class="pImg">
+    </div>
 </body>
 <script defer src="main.js"></script>
 </html>
