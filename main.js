@@ -1,9 +1,22 @@
+let winners = [];
 const choices =["rock","paper","scissors"]
-const winners =[];
-//The game will go for five rounds
-function Game() {
 
-        playRound(i);   
+
+function resetGame(){
+    //Reset Game
+}
+
+
+function startGame() {
+    //The game will last till someone reaches five wins
+    let imgs = document.querySelectorAll("img")
+    imgs.forEach((img) =>
+        img.addEventListener("click", () =>{
+            if (img.id) {
+                playRound(img.id);
+            }
+        })
+    );
 }
 
 function playRound(round){
@@ -44,4 +57,4 @@ function logWins() {
     let ties = winners.filter((item) => item == "Tie").length;
 }
 
-Game();
+startGame();
