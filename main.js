@@ -19,13 +19,46 @@ function startGame() {
     );
 }
 
-function playRound(round){
+function playRound(playChoice){
+    let wins = checkWins();
+    if(wins >= 5){
+        return
+    }
 const computerSelection = computerChoice();
 //Using "console.log(computerSelection)"
 //We can now see what the computer choose
 const winner = checkWinner(playerSelection, computerSelection)
 
 winners.push(winner)
+tallyWins()
+displayRound(playerChoice, computerChoice, winner);
+wins = checkWins();
+if (wins == 5){
+
+}
+}
+
+function displayRound (playerChoice, computerChoice, winner);{
+    document.querySelector(".playerChoice").textContent = `You Chose: ${
+        playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)
+    }`;
+        
+    document.querySelector(
+        ".computerChoice"
+        ).textContent = `The Computer Chose: ${
+            computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)
+    }`;
+    document.querySelector(".ties").textContent = `ties: ${ties}`;
+}
+
+
+function tallyWins() {
+    let playerWins = winners.filter((item) => item == "Player").length;
+    let computerWins = winners.filter((item) => item == "Computer").length;
+    let ties = winners.filter((item) => item == "Tie").length;
+    document.querySelector('.playerScore').textContent = `score: ${pWinCount}`
+    document.querySelector('.computerScore').textContent = `score: ${cWinCount}`
+    document.querySelector('.ties').textContent = `score: ${ties}`
 }
 
 function computerChoice(){
@@ -36,6 +69,14 @@ function computerChoice(){
     // easier to use choices.length than 3 in case if changes.
     return choices[Math.floor(Math.random()*choices.length)]
 }
+
+function checkWins(){
+    let playerWins = winners.filter((item) => item == "Player").length;
+    let computerWins = winners.filter((item) => item == "Computer").length;
+    return Math.max(pWinCount,cWhinCount)
+
+}
+
 
 function checkWinner(choiceP, choiceC){
     if(choiceP === choiceC){
