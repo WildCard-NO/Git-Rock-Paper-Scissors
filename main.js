@@ -34,11 +34,28 @@ tallyWins()
 displayRound(playerChoice, computerChoice, winner);
 wins = checkWins();
 if (wins == 5){
-
+    //display end result
+    //change the button to visible,
+    //change the text to display winner
+    displayEnd()
 }
 }
 
-function displayRound (playerChoice, computerChoice, winner);{
+function displayEnd() {
+    let playerWins = winners.filter(item => item == "player").length;
+
+    if (playerWins == 5) {
+        document.querySelector("winner").textContent =
+        "You won 5 Games, Your now the Champion!";
+    } else {
+        document.querySelector(".winner").textContent =
+        "Computer won 5 Games, it is now the Champion"
+    }
+    document.querySelector(".reset").computedStyleMap.display = "flex";
+}
+
+
+function displayRound (playerChoice, computerChoice, winner){
     document.querySelector(".playerChoice").textContent = `You Chose: ${
         playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)
     }`;
@@ -48,7 +65,7 @@ function displayRound (playerChoice, computerChoice, winner);{
         ).textContent = `The Computer Chose: ${
             computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)
     }`;
-    document.querySelector(".ties").textContent = `ties: ${ties}`;
+    document.querySelector("winner").textContent = `Round Winner: ${winner}`;
 }
 
 
@@ -73,7 +90,7 @@ function computerChoice(){
 function checkWins(){
     let playerWins = winners.filter((item) => item == "Player").length;
     let computerWins = winners.filter((item) => item == "Computer").length;
-    return Math.max(pWinCount,cWhinCount)
+    return Math.max(pWinCount,cWhinCount);
 
 }
 
