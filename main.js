@@ -3,7 +3,14 @@ const choices =["rock","paper","scissors"]
 
 
 function resetGame(){
-    //Reset Game
+    winners = []
+    document.querySelector(".playerScore").textContent = "Score: 0";
+    document.querySelector(".computerScore").textContent = "Score: 0";
+    document.querySelector(".ties").textContent = "Ties: 0";
+    document.querySelector(".winner").textContent = "";
+    document.querySelector(".playerChoice").textContent = "";
+    document.querySelector(".computerChoice").textContent = "";
+    document.querySelector(".reset").textContent = "none";
 }
 
 
@@ -19,22 +26,20 @@ function startGame() {
     );
 }
 
-function playRound(playChoice){
+function playRound(playerChoice){
     let wins = checkWins();
     if(wins >= 5){
         return
     }
-ccc
-fff
-aaa
-
+    
 const computerChoice = computerSelect();
 
 //We can now see what the computer choose
-const winner = checkWinner(playerChoice, computerChoice);
+const winner = checkWinner (playerChoice, computerChoice);
 winners.push(winner)
 tallyWins()
 displayRound(playerChoice, computerChoice, winner);
+displayRoundWinner(winner); //trying this line out
 wins = checkWins();
 if (wins == 5){
     //display end result
@@ -45,16 +50,18 @@ if (wins == 5){
 }
 
 function displayEnd() {
-    let playerWins = winners.filter(item => item == "player").length;
+    let playerWins = winners.filter(item => item == "Player").length;
 
     if (playerWins == 5) {
-        document.querySelector("winner").textContent =
+        document.querySelector(".winner").textContent =
         "You won 5 Games, Your now the Champion!";
     } else {
         document.querySelector(".winner").textContent =
         "Computer won 5 Games, it is now the Champion"
     }
-    document.querySelector(".reset").computedStyleMap.display = "flex";
+    //document.querySelector(".reset").computedStyleMap.display = "flex";
+    document.querySelector(".reset").style.display = "flex";
+
 }
 
 
@@ -68,7 +75,7 @@ function displayRound (playerChoice, computerChoice, winner){
         ).textContent = `The Computer Chose: ${
             computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)
     }`;
-    document.querySelector("winner").textContent = `Round Winner: ${winner}`;
+    document.querySelector(".winner").textContent = "The Round was a tie";
 }
 
 function displayRoundWinner(winner) {
