@@ -24,11 +24,14 @@ function playRound(playChoice){
     if(wins >= 5){
         return
     }
-const computerSelection = computerChoice();
-//Using "console.log(computerSelection)"
-//We can now see what the computer choose
-const winner = checkWinner(playerSelection, computerSelection)
+ccc
+fff
+aaa
 
+const computerChoice = computerSelect();
+
+//We can now see what the computer choose
+const winner = checkWinner(playerChoice, computerChoice);
 winners.push(winner)
 tallyWins()
 displayRound(playerChoice, computerChoice, winner);
@@ -68,17 +71,29 @@ function displayRound (playerChoice, computerChoice, winner){
     document.querySelector("winner").textContent = `Round Winner: ${winner}`;
 }
 
+function displayRoundWinner(winner) {
+    if (winner == "Player") {
+        document.querySelector(".winner").textContent = "You won the Round!";
+    } else if (winner == "Computer") {
+        document.querySelector(".winner").textContent = 
+        "The Computer won the Round!";
+    } else {
+        document.querySelector(".winner").textContent = "Its a Tie"
 
-function tallyWins() {
-    let playerWins = winners.filter((item) => item == "Player").length;
-    let computerWins = winners.filter((item) => item == "Computer").length;
-    let ties = winners.filter((item) => item == "Tie").length;
-    document.querySelector('.playerScore').textContent = `score: ${pWinCount}`
-    document.querySelector('.computerScore').textContent = `score: ${cWinCount}`
-    document.querySelector('.ties').textContent = `score: ${ties}`
+    }
 }
 
-function computerChoice(){
+function tallyWins() {
+    const pWinCount = winners.filter((item) => item == "Player").length;
+    const cWinCount = winners.filter((item) => item == "Computer").length;
+    const ties = winners.filter((item) => item == "Tie").length;
+    document.querySelector(".playerScore").textContent = `Score: ${pWinCount}`;
+    document.querySelector(".computerScore").textContent = `Score: ${cWinCount}`;
+    document.querySelector(".ties").textContent = `Ties: ${ties}`;
+  }
+
+
+function computerSelect(){
 
     //Math.floor rounds up the number so 
 
@@ -87,12 +102,12 @@ function computerChoice(){
     return choices[Math.floor(Math.random()*choices.length)]
 }
 
-function checkWins(){
-    let playerWins = winners.filter((item) => item == "Player").length;
-    let computerWins = winners.filter((item) => item == "Computer").length;
-    return Math.max(pWinCount,cWhinCount);
-
+function checkWins() {
+  const pWinCount = winners.filter((item) => item == "Player").length;
+  const cWinCount = winners.filter((item) => item == "Computer").length;
+  return Math.max(pWinCount, cWinCount);
 }
+
 
 
 function checkWinner(choiceP, choiceC){
