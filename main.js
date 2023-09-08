@@ -1,5 +1,5 @@
 let winners = [];
-const choices =["rock","paper","scissors"]
+const choices =["torchic","mudkip","treecko"]
 
 
 function resetGame(){
@@ -10,7 +10,7 @@ function resetGame(){
     document.querySelector(".winner").textContent = "";
     document.querySelector(".playerChoice").textContent = "";
     document.querySelector(".computerChoice").textContent = "";
-    document.querySelector(".reset").textContent = "none";
+    document.querySelector(".pokemon").style.display = "none";
 }
 
 
@@ -34,17 +34,14 @@ function playRound(playerChoice){
     
 const computerChoice = computerSelect();
 
-//We can now see what the computer choose
+
 const winner = checkWinner (playerChoice, computerChoice);
 winners.push(winner)
 tallyWins()
 displayRound(playerChoice, computerChoice, winner);
-displayRoundWinner(winner); //trying this line out
+displayRoundWinner(winner);
 wins = checkWins();
 if (wins == 5){
-    //display end result
-    //change the button to visible,
-    //change the text to display winner
     displayEnd()
 }
 }
@@ -59,20 +56,19 @@ function displayEnd() {
         document.querySelector(".winner").textContent =
         "Computer won 5 Games, it is now the Champion"
     }
-    //document.querySelector(".reset").computedStyleMap.display = "flex";
-    document.querySelector(".reset").style.display = "flex";
+    document.querySelector(".pokemon").style.display = "flex";
 
 }
 
 
 function displayRound (playerChoice, computerChoice, winner){
-    document.querySelector(".playerChoice").textContent = `You Chose: ${
+    document.querySelector(".playerChoice").textContent = `Your Pokemon Is: ${
         playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)
     }`;
         
     document.querySelector(
         ".computerChoice"
-        ).textContent = `The Computer Chose: ${
+        ).textContent = `Computer's Pokemon Is: ${
             computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)
     }`;
     document.querySelector(".winner").textContent = "The Round was a tie";
@@ -109,6 +105,7 @@ function computerSelect(){
     return choices[Math.floor(Math.random()*choices.length)]
 }
 
+
 function checkWins() {
   const pWinCount = winners.filter((item) => item == "Player").length;
   const cWinCount = winners.filter((item) => item == "Computer").length;
@@ -121,9 +118,9 @@ function checkWinner(choiceP, choiceC){
     if(choiceP === choiceC){
         return "Tie";
     }   else if (
-        (choiceP == "rock" && choiceC =="scissors") ||
-        (choiceP == "paper" && choiceC =="rock") ||
-        (choiceP == "scissors" && choiceC =="paper")
+        (choiceP == "torchic" && choiceC =="treecko") ||
+        (choiceP == "mudkip" && choiceC =="torchic") ||
+        (choiceP == "treecko" && choiceC =="mudkip")
     )   {
         return "Player";
     }   else{
